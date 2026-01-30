@@ -134,20 +134,20 @@ install_config() {
                 print_verbose "Backup created: $backup_path"
             else
                 print_error "Failed to create backup for $tool_name"
-                ((FAILED++))
+                FAILED=$((FAILED + 1))
                 return 1
             fi
 
             # Copy new config
             if cp "$SOURCE_FILE" "$full_path"; then
                 print_success "Updated $tool_name configuration"
-                ((UPDATED++))
+                UPDATED=$((UPDATED + 1))
             else
                 print_error "Failed to copy configuration for $tool_name"
                 # Restore backup
                 mv "$backup_path" "$full_path"
                 print_warning "Restored backup"
-                ((FAILED++))
+                FAILED=$((FAILED + 1))
                 return 1
             fi
         fi
@@ -163,17 +163,17 @@ install_config() {
                 print_verbose "Created directory: $config_dir"
             else
                 print_error "Failed to create directory: $config_dir"
-                ((FAILED++))
+                FAILED=$((FAILED + 1))
                 return 1
             fi
 
             # Copy config
             if cp "$SOURCE_FILE" "$full_path"; then
                 print_success "Installed $tool_name configuration"
-                ((INSTALLED++))
+                INSTALLED=$((INSTALLED + 1))
             else
                 print_error "Failed to install configuration for $tool_name"
-                ((FAILED++))
+                FAILED=$((FAILED + 1))
                 return 1
             fi
         fi
