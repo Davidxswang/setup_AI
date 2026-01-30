@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- New "Research paper handling" section to `AGENTS.md` to clarify protocols for open access vs. paywalled papers.
+- New "Citation verification" section to `AGENTS.md` requiring DOI resolution and metadata validation for all citations.
+- Added citation preference rule: prefer published versions (conference/journal) over preprints (arXiv).
+- Added "Scientific Reproducibility" section (multiple seeds, mean/variance).
+- Added "Configuration Management" section (global Pydantic config, no magic numbers).
+- Added "Scientific Visualization" section (vector graphics, legible fonts).
+- Added "Paper Construction" section (automated asset generation, TeX merging).
+- Added "No Assumption Policy" to require verification of code elements (names, input/output types) before use.
+- Added "Tensor Shapes" rule requiring explicit shape documentation in docstrings for array operations.
+- Added "Path Handling" rule to prefer `pathlib.Path` over `os.path` and string manipulation.
+
 ## [2.0.0] - 2026-01-24
 
 ### Added
