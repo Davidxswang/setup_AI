@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added "No Assumption Policy" to require verification of code elements (names, input/output types) before use.
 - Added "Tensor Shapes" rule requiring explicit shape documentation in docstrings for array operations.
 - Added "Path Handling" rule to prefer `pathlib.Path` over `os.path` and string manipulation.
+- Added "Data Formats" guidance to prefer Parquet for large datasets.
+- Added "Concurrency" section with guidance on multiprocessing (CPU-bound) vs multithreading/asyncio (I/O-bound).
 
 ## [2.0.0] - 2026-01-24
 

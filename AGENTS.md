@@ -25,12 +25,16 @@ If a command is not available in the repo, say so explicitly and propose the clo
 ## Data modeling
 - Prefer Pydantic models for validated IO boundaries and structured data contracts.
 - Keep models close to the boundary layer (API/CLI/config) rather than leaking validation everywhere.
+- **Data Formats:** For large datasets that exceed CSV's practical limits, prefer Parquet format for better compression, faster I/O, and type preservation.
 
 ## Code style / architecture
 - Prefer small, composable functions; keep side effects at the edges (IO, CLI, network).
 - Imports should be at the top of the file; avoid inline imports unless needed for optional dependencies or to break cycles.
 - **Path Handling:** Always use `pathlib.Path` for file system operations. Avoid string manipulation (`os.path.join`) or `os.path` functions.
 - If using argparse, should use `ArgumentDefaultsHelpFormatter` for formatter.
+- **Concurrency:**
+  - For CPU-intensive operations (computation, data processing), prefer `multiprocessing` to utilize multiple CPU cores.
+  - For I/O-bound operations (network requests, file I/O, database queries), prefer `multithreading` or `asyncio` to handle concurrent I/O efficiently.
 - Logging:
   - Prefer `logging` (standard library) by default; use `loguru` only if the repo already uses it or explicitly requests it.
   - Avoid `print` for operational logs.
